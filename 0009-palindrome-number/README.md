@@ -1,3 +1,11 @@
+<고려사항>
+1. 음수이거나 뒷자리가 0인경우 바로 false를 리턴한다.
+if(x<0 || (x!=0 && x%10==0) return false;
+2. x와 x의 역순으로 저장해서 둘이 동일한지 확인한다.
+x가 123이라면 rev는 321
+x가 11211이라면 rev는 11211
+이후 리턴해줄때 x와 rev가 동일한지(짝수인경우), 혹은 x와 rev/10이 동일한지(홀수인경우 가운데 제외) 확인한다.
+
 <h2><a href="https://leetcode.com/problems/palindrome-number">9. Palindrome Number</a></h2><h3>Easy</h3><hr><p>Given an integer <code>x</code>, return <code>true</code><em> if </em><code>x</code><em> is a </em><span data-keyword="palindrome-integer"><em><strong>palindrome</strong></em></span><em>, and </em><code>false</code><em> otherwise</em>.</p>
 
 <p>&nbsp;</p>
