@@ -9,36 +9,15 @@ public:
 
         // s를 하나씩 끊어서 loop를 돌리면서, 문자열 파악해서 value를 더해주면 됨
         int answer = 0;
+        // 만약 현재 숫자가 다음 숫자보다 작으면 현재 숫자를 빼주고, 크면 더함
+        // 예를 들어, IV면 1<5니까 1을 뺌(VI면 5<1이니까 5+1을 더함)
+        // XC면 10<50이니까 10을 뺌(CX면 50<10이니까 50+10을 더함)
         for(int i=0; i<s.size(); i++) {
-            char roman = s[i];
-            int roman_num = roman_to_integer_map[roman];
-            
-            if (roman=='I') {
-                if (s[i+1]=='V') {
-                    roman_num = 4;
-                    i++;
-                } else if (s[i+1]=='X') {
-                    roman_num = 9;
-                    i++;
-                }
-            } else if (roman=='X') {
-                if (s[i+1]=='L') {
-                    roman_num = 40;
-                    i++;
-                } else if (s[i+1]=='C') {
-                    roman_num = 90;
-                    i++;
-                }
-            } else if (roman=='C') {
-                if (s[i+1]=='D') {
-                    roman_num = 400;
-                    i++;
-                } else if (s[i+1]=='M') {
-                    roman_num = 900;
-                    i++;
-                }
+            if (roman_to_integer_map[s[i]]<roman_to_integer_map[s[i+1]]){
+                answer = answer - roman_to_integer_map[s[i]];
+            } else {
+                answer = answer + roman_to_integer_map[s[i]];
             }
-            answer += roman_num;
         }
         return answer;
     }
